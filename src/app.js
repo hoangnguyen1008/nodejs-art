@@ -8,8 +8,12 @@ const app = express()
 app.use(morgan('dev'))
 app.use(helmet())
 app.use(compression())
-// init DB
 
+// init DB
+require('./dbs/init.mongodb')
+const { countConnect } = require('./helper/check.connect')
+countConnect()
+checkOverload()
 // init routers
 app.get('/', (req, res, next) => {
     return res.status(200).json({
