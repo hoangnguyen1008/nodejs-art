@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express')
 const morgan = require('morgan')
 const helmet = require('helmet')
@@ -11,7 +12,7 @@ app.use(compression())
 
 // init DB
 require('./dbs/init.mongodb')
-const { countConnect } = require('./helper/check.connect')
+const { countConnect, checkOverload } = require('./helper/check.connect')
 countConnect()
 checkOverload()
 // init routers

@@ -42,3 +42,6 @@ Section 3:
 - PoolSize: tập hợp nhóm kết nối có thể tái sử dụng (tương tự với mysql, oracle). VD khi có kết nối thì mongo sẽ kiểm tra nhóm kết nối, nếu có thì sẽ sử dụng kết nối cho yêu cầu mới, nếu không sẽ tạo kết nối mới. -> cải thiện hiệu suất
     - Nếu quá poolsize thì sao: những kết nối quá giới hạn sẽ vào hàng đợi. nhóm kết nối tối đa dựa vào sức mạnh server.
 - 1 core kết nối được bao nhiêu: N/A
+
+Section 4: .env và cách kết hợp env và configs 
+https://www.youtube.com/watch?v=jnxsMU5hjqs
