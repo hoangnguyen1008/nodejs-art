@@ -1,6 +1,7 @@
 'use strict'
 
 const mongoose = require('mongoose')
+mongoose.set('strictQuery', false)
 const { db: {host, name, port} } = require('../configs/config.mongodb')
 const connectString = `mongodb://${host}:${port}/${name}`
 
@@ -21,7 +22,7 @@ class Database {
         }).then( _ => {
             console.log(`connected to mongodb`)
         })
-        .catch(err => console.log(`Connection error`))
+        .catch(err => console.log(`Connection error:: ${err}`))
     }
 
     static getInstance() {
@@ -31,3 +32,6 @@ class Database {
         return Database.instance
     }
 }
+
+const instance = Database.getInstance()
+module.exports = instance

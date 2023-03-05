@@ -12,15 +12,9 @@ app.use(compression())
 
 // init DB
 require('./dbs/init.mongodb')
-const { countConnect, checkOverload } = require('./helper/check.connect')
-countConnect()
-checkOverload()
+
 // init routers
-app.get('/', (req, res, next) => {
-    return res.status(200).json({
-        message: 'welcome to nodejs-art'
-    })
-})
+app.use('/', require('./routes'))
 
 // handle errors
 module.exports = app

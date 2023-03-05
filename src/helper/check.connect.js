@@ -7,14 +7,15 @@ const process = require('process')
 const _SECONDS = 5000
 
 const countConnect = () => {
-    const numConnection = mongoose.numConnection.length
+    const numConnection = mongoose.numConnection ?? [].length
     console.log(`Number of connection: ${numConnection}`)
+    
 }
 
 // Monitor every 5s
 const checkOverload = () => {
     setInterval(() => {
-        const numConnection = mongoose.numConnection.length
+        const numConnection = mongoose.numConnection ?? [].length
         const numCores = os.cpus().length // check number of CPU core
         const memoryUse = process.memoryUsage.rss //check memory use
         console.log(`active connection: ${numConnection}`)

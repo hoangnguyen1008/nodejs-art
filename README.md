@@ -45,3 +45,8 @@ Section 3:
 
 Section 4: .env và cách kết hợp env và configs 
 https://www.youtube.com/watch?v=jnxsMU5hjqs
+
+Section 5:
+- Package: mongo snipet for nodejs
+    - Auto gen Schema by !dmbg or !dmbgum
+
