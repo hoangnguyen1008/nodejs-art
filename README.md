@@ -49,4 +49,6 @@ https://www.youtube.com/watch?v=jnxsMU5hjqs
 Section 5:
 - Package: mongo snipet for nodejs
     - Auto gen Schema by !dmbg or !dmbgum
-
+- Extension postman: REST Client
+- const holderShop = await shopModel.findOne({ email }).lean()
+    => lean() return JS object thuần túy
