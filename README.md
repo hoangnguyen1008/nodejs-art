@@ -47,8 +47,11 @@ Section 4: .env và cách kết hợp env và configs
 https://www.youtube.com/watch?v=jnxsMU5hjqs
 
 Section 5:
-- Package: mongo snipet for nodejs
+- Extension: mongo snipet for nodejs
     - Auto gen Schema by !dmbg or !dmbgum
 - Extension postman: REST Client
 - const holderShop = await shopModel.findOne({ email }).lean()
     => lean() return JS object thuần túy
+- RSA:
+    - Lưu public key vào DB
+    - Trả cho user private key

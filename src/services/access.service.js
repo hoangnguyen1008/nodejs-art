@@ -3,6 +3,8 @@
 const shopModel = require('../models/shop.model')
 const bcrypt = require('bcrypt')
 const crypto = require('crypto')
+const KeyTokenService = require('./keyToken.service')
+const { createTokensPair } = require('../auth/authUtils')
 
 const ShopRole = {
     SHOP: '01',
@@ -31,10 +33,39 @@ class AccessService {
             })
 
             if (newShop) {
+                // Create publicKey, privateKey
                 const { privateKey, publicKey } = crypto.generateKeyPairSync('rsa', {
                     modulusLength: 4096
                 })
-                console.log({ privateKey, publicKey})
+
+                const publicKeyString = await KeyTokenService.createKeyToken({
+                    userId: newShop._id,
+                    publicKey
+                })
+
+                if (!publicKeyString) {
+                    return {
+                        code: 'XXXX',
+                        message: 'public key error'
+                    }
+                }
+
+                // Create Tokens Pair
+                const tokens = await createTokensPair({ userId: newShop._id, publicKey, privateKey})
+                console.log(`Tokens pairs created::`, tokens)
+
+                return {
+                    code: 201,
+                    metadata: {
+                        shop: newShop,
+                        tokens
+                    }
+                }
+            }
+
+            return {
+                code: 200,
+                metadata: null
             }
 
         } catch (error) {
